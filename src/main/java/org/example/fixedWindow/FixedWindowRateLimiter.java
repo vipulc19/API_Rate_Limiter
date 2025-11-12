@@ -33,12 +33,15 @@ public class FixedWindowRateLimiter {
             window.setWindowStart(currentTimeInSec);
             window.setRequestCount(0);
         }
-        window.setRequestCount(window.getRequestCount() + 1);   // wrong increment
 
-        long existingStartTime = window.getWindowStart();
         long existingCount = window.getRequestCount();
 
-        return currentTimeInSec - existingStartTime < windowSizeInSec && existingCount <= maxRequests;  //redundant first condition
+        if (existingCount >= maxRequests)
+            return false;
+
+        window.setRequestCount(window.getRequestCount() + 1);
+
+        return true;
     }
 
 
