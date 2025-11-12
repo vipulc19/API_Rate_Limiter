@@ -55,5 +55,10 @@ public class FixedWindowRateLimiter {
         System.out.println(fixedWindowRateLimiter.allowRequest("X"));
         System.out.println(fixedWindowRateLimiter.allowRequest("X"));
 
+        System.out.println();
+        System.out.println(fixedWindowRateLimiter.allowRequest("Y"));
+        System.out.println(fixedWindowRateLimiter.allowRequest("Y"));
+        System.out.println(fixedWindowRateLimiter.allowRequest("Y"));
+
     }
 }
